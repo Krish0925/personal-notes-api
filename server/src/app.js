@@ -36,6 +36,10 @@ app.use("/api/notes", noteRoutes);
 
 
 app.use("/api/categories", categoryRoutes);
+app.get("/", (req, res) => {
+  res.json({ ok: true, message: "Welcome to Personal Notes API", routes: ["/health", "/db-test"] });
+});
+
 // 404 handler for unknown routes (must be after all routes)
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
